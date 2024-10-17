@@ -44,9 +44,18 @@ export class ProductController {
     return this.productService.deleteProduct(id);
   }
 
+  // Vérifier le stock d'un produit
   @Post('check-stock')
   async checkStock(@Body() body: { productId: string; quantity: number }) {
-    const { productId, quantity } = body; // Extraire les valeurs du body
+    const { productId, quantity } = body;
     return this.productService.checkStock(productId, quantity);
+  }
+
+  @Patch(':id/quantity')  
+  async updateQuantity(
+    @Param('id') id: string, 
+    @Body('newQuantity') newQuantity: number
+  ) {
+    return this.productService.updateQuantity(id, newQuantity);
   }
 }

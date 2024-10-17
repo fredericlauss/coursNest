@@ -32,4 +32,13 @@ export class ProductService {
     const product = await this.productModel.findById(productId);
     return product ? product.quantity >= quantity : false; 
   }
+
+  async updateQuantity(productId: string, newQuantity: number): Promise<ProductDocument | null> {
+    return this.productModel.findByIdAndUpdate(
+      productId,
+      { quantity: newQuantity },
+      { new: true }
+    );
+  }
+
 }
