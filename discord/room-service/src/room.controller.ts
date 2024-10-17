@@ -32,4 +32,12 @@ export class RoomController {
   async deleteRoom(@Param('id') id: string) {
     return this.roomService.deleteRoom(id);
   }
+
+  @Post(':roomId/users')
+  async addUserToRoom(
+    @Param('roomId') roomId: string,
+    @Body() body: { userId: string }
+  ) {
+    return this.roomService.addUserToRoom(roomId, body.userId);
+  }
 }
