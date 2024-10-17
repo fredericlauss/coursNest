@@ -43,4 +43,10 @@ export class ProductController {
   async deleteProduct(@Param('id') id: string) {
     return this.productService.deleteProduct(id);
   }
+
+  @Post('check-stock')
+  async checkStock(@Body() body: { productId: string; quantity: number }) {
+    const { productId, quantity } = body; // Extraire les valeurs du body
+    return this.productService.checkStock(productId, quantity);
+  }
 }

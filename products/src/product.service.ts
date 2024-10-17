@@ -27,4 +27,9 @@ export class ProductService {
   async deleteProduct(id: string): Promise<any> {
     return this.productModel.findByIdAndDelete(id).exec();
   }
+
+  async checkStock(productId: string, quantity: number): Promise<boolean> {
+    const product = await this.productModel.findById(productId);
+    return product ? product.quantity >= quantity : false; 
+  }
 }
