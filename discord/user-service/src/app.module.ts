@@ -6,7 +6,7 @@ import { UserModule } from './modules/user.module';
 
 @Module({
   imports: [
-    MongooseModule.forRoot('mongodb://localhost:27017/discord'),
+    MongooseModule.forRoot('mongodb://mongo:27017/discord'),
     UserModule,
   ],
   controllers: [AppController],
