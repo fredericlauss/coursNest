@@ -1,7 +1,7 @@
 version: '3.8'
 
 services:
-  product-service:
+  user-service:
     build:
       context: ./user-service  
       dockerfile: Dockerfile
@@ -10,7 +10,7 @@ services:
     depends_on:
       - mongo
 
-  order-service:
+  room-service:
     build:
       context: ./room-service  
       dockerfile: Dockerfile
