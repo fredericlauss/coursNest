@@ -9,6 +9,11 @@ services:
       - '3001:3000'
     depends_on:
       - mongo
+    volumes:
+      - ./user-service:/app
+      - /app/node_modules
+    networks:
+      - node-network
 
   room-service:
     build:
@@ -18,6 +23,11 @@ services:
       - '3002:3000'  
     depends_on:
       - mongo
+    volumes:
+      - ./room-service:/app
+      - /app/node_modules
+    networks:
+      - node-network
 
   mongo:
     container_name: mongo
@@ -27,6 +37,8 @@ services:
       - 27017:27017
     volumes:
       - ./data:/data/db
+    networks:
+      - node-network
 
   angular-app:
     build:
@@ -34,3 +46,15 @@ services:
       dockerfile: Dockerfile
     ports:
       - '4200:4200'
+    volumes:
+      - ./front:/app
+      - /app/node_modules
+    networks:
+      - node-network
+
+volumes:
+  mongodb:
+
+networks:
+  node-network:
+    driver: bridge
