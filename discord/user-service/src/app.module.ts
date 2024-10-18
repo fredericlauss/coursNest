@@ -4,7 +4,6 @@ import { JwtModule } from '@nestjs/jwt';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { UserModule } from './modules/user.module';
-import { WsGateway } from './ws.gateway';
 
 @Module({
   imports: [
@@ -16,6 +15,6 @@ import { WsGateway } from './ws.gateway';
     }),
   ],
   controllers: [AppController],
-  providers: [AppService, WsGateway],
+  providers: [AppService],
 })
 export class AppModule {}
